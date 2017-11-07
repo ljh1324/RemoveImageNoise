@@ -1,0 +1,9 @@
+D:\MyProject\RemoveImageNoise\RemoveImageNoise\bin\Debug\RemoveImageNoise.exe.config
+D:\MyProject\RemoveImageNoise\RemoveImageNoise\bin\Debug\RemoveImageNoise.exe
+D:\MyProject\RemoveImageNoise\RemoveImageNoise\bin\Debug\RemoveImageNoise.pdb
+D:\MyProject\RemoveImageNoise\RemoveImageNoise\obj\Debug\RemoveImageNoise.csprojResolveAssemblyReference.cache
+D:\MyProject\RemoveImageNoise\RemoveImageNoise\obj\Debug\RemoveImageNoise.Form1.resources
+D:\MyProject\RemoveImageNoise\RemoveImageNoise\obj\Debug\RemoveImageNoise.Properties.Resources.resources
+D:\MyProject\RemoveImageNoise\RemoveImageNoise\obj\Debug\RemoveImageNoise.csproj.GenerateResource.Cache
+D:\MyProject\RemoveImageNoise\RemoveImageNoise\obj\Debug\RemoveImageNoise.exe
+D:\MyProject\RemoveImageNoise\RemoveImageNoise\obj\Debug\RemoveImageNoise.pdb
