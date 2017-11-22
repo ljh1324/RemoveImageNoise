@@ -65,15 +65,14 @@ namespace RemoveImageNoise
                     if (visited[locY, locX])
                         continue;
 
+                    visited[locY, locX] = true;
                     Color color = bitmap.GetPixel(locX, locY);
                     // if not visted pixel, not black
                     if (color.R != 0 || color.G != 0 || color.B != 0)
                     {
-                        points.Add(new Point(locX, locY));
-                        visited[locY, locX] = true;
+                        points.Add(new Point(x, y));
                         setRemovePoints(bitmap, visited, locX, locY);
                     }
-
                 }
             }
         }
@@ -86,20 +85,20 @@ namespace RemoveImageNoise
                     visited[y, x] = false;
 
             Bitmap bitmapWithoutNoise = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), bitmap.PixelFormat);
-            int theta = 10;
+            int theta = 50;
 
             for (int y = 0; y < bitmap.Height; ++y)
                 for (int x = 0; x < bitmap.Width; ++x)
                 {
                     if (visited[y, x])
                         continue;
-                    visited[y, x] = true;
-
                     Color color = bitmap.GetPixel(x, y);
                     if (color.R != 0 || color.G != 0 || color.B != 0)
                     {
                         points = new List<Point>();
                         points.Add(new Point(x, y));
+                        visited[y, x] = true;
+
                         setRemovePoints(bitmap, visited, x, y);
 
                         if (points.Count < theta)
@@ -112,9 +111,59 @@ namespace RemoveImageNoise
             return bitmapWithoutNoise;
         }
 
+        private int analysisEdge(Bitmap bitmap, Color firstObjColor, Color secondObjColor, int y, int theta)
+        {
+            Point startPoint = new Point(0, y);
+
+            for (int x = 0; x < bitmap.Width; ++x)
+            {
+                Color bitmapColor = bitmap.GetPixel(x, y);
+                if (Math.Abs(bitmapColor.R - firstObjColor.R) <= theta && Math.Abs(bitmapColor.G - firstObjColor.G) <= theta
+                    && Math.Abs(bitmapColor.B - firstObjColor.B) <= theta)
+                    startPoint.x = x;
+
+            }
+
+            Point endPoint = new Point(0, y);
+
+            for (int x = startPoint.x + 1; x < bitmap.Width; ++x)
+            {
+                Color bitmapColor = bitmap.GetPixel(x, y);
+                if (Math.Abs(bitmapColor.R - secondObjColor.R) <= theta && Math.Abs(bitmapColor.G - secondObjColor.G) <= theta
+                    && Math.Abs(bitmapColor.B - secondObjColor.B) <= theta)
+                    endPoint.x = x;
+            }
+
+            int xLength = endPoint.x - startPoint.x;
+
+            return xLength;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void savePicture_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (savePicture.Image == null)
+                return;
+
+            int x = e.X;
+            int y = e.Y;
+
+            Bitmap img = (Bitmap) savePicture.Image;
+            int length = analysisEdge(img, Color.Red, Color.Blue, y, 100);
+
+            int r = img.GetPixel(x, y).R;
+            int g = img.GetPixel(x, y).G;
+            int b = img.GetPixel(x, y).B;
+
+            String value = " : " + length.ToString();
+            lengthLabel.Text = value;
+
+            value = r.ToString() + " " + g.ToString() + " " + b.ToString();
+            rgbLabel.Text = value;
         }
     }
 }

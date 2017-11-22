@@ -35,6 +35,10 @@
             this.saveBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lengthLabel = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.rgbLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.loadPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.savePicture)).BeginInit();
             this.panel1.SuspendLayout();
@@ -76,6 +80,7 @@
             this.savePicture.Size = new System.Drawing.Size(291, 345);
             this.savePicture.TabIndex = 3;
             this.savePicture.TabStop = false;
+            this.savePicture.MouseMove += new System.Windows.Forms.MouseEventHandler(this.savePicture_MouseMove);
             // 
             // saveBtn
             // 
@@ -105,11 +110,51 @@
             this.panel2.Size = new System.Drawing.Size(299, 353);
             this.panel2.TabIndex = 6;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(698, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 12);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Length";
+            // 
+            // lengthLabel
+            // 
+            this.lengthLabel.AutoSize = true;
+            this.lengthLabel.Location = new System.Drawing.Point(698, 36);
+            this.lengthLabel.Name = "lengthLabel";
+            this.lengthLabel.Size = new System.Drawing.Size(17, 12);
+            this.lengthLabel.TabIndex = 8;
+            this.lengthLabel.Text = " : ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(698, 61);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 12);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "RGB";
+            // 
+            // rgbLabel
+            // 
+            this.rgbLabel.AutoSize = true;
+            this.rgbLabel.Location = new System.Drawing.Point(698, 82);
+            this.rgbLabel.Name = "rgbLabel";
+            this.rgbLabel.Size = new System.Drawing.Size(21, 12);
+            this.rgbLabel.TabIndex = 10;
+            this.rgbLabel.Text = " :  ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(708, 431);
+            this.ClientSize = new System.Drawing.Size(773, 431);
+            this.Controls.Add(this.rgbLabel);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lengthLabel);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.saveBtn);
@@ -136,6 +181,10 @@
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lengthLabel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label rgbLabel;
     }
 }
 
